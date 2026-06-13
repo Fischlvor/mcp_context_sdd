@@ -104,9 +104,9 @@
 
 ## 10. 部署与文档
 
-- [ ] 10.1 编写各服务 `Dockerfile`（server-mcp 多阶段构建，web-mcp nginx 静态托管）
-- [ ] 10.2 配置 `web-mcp/nginx.conf`：前端静态资源服务 + `/api/` 和 `/mcp` 反向代理到 Go Server
-- [ ] 10.3 运行 `swag init` 生成 Swagger 文档（`docs/swagger.json`），验证 `GET /swagger/index.html` 可访问
-- [ ] 10.4 编写 `docs/MCP.md`：MCP 工具文档（search-libraries 和 get-library-docs 输入/输出格式、多 topic 用法、IDE 配置示例）
-- [ ] 10.5 编写 `docs/DEPLOYMENT.md`：部署指南（环境变量说明、docker-compose 启动步骤、常见问题）
-- [ ] 10.6 验收测试：部署到测试环境，配置 Claude Code MCP，验证 search-libraries 和 get-library-docs 工具可正常调用，多 topic 并行搜索正确，检索延迟 < 1s
+- [x] 10.1 编写各服务 `Dockerfile`（server-mcp 多阶段构建，web-mcp nginx 静态托管）
+- [x] 10.2 配置 `web-mcp/nginx.conf`：前端静态资源服务 + `/api/` 和 `/mcp` 反向代理到 Go Server
+- [x] 10.3 运行 `swag init` 生成 Swagger 文档（`docs/swagger.json`），验证 `GET /swagger/index.html` 可访问
+- [x] 10.4 编写 `docs/MCP.md`：MCP 工具文档（search-libraries 和 get-library-docs 输入/输出格式、多 topic 用法、IDE 配置示例）
+- [x] 10.5 编写 `docs/DEPLOYMENT.md`：部署指南（环境变量说明、docker-compose 启动步骤、常见问题）
+- [x] 10.6 验收测试：部署到测试环境，配置 Claude Code MCP，验证 search-libraries 和 get-library-docs 工具可正常调用，多 topic 并行搜索正确，检索延迟 < 1s
