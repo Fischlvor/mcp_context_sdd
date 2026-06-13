@@ -44,14 +44,14 @@
 
 ## 5. 库管理和 GitHub 集成
 
-- [ ] 5.1 实现 semver 版本校验函数（`ValidateVersion`）：正则 `^v?(\d+)\.(\d+)\.(\d+)(-[a-zA-Z0-9.]+)?$`，不符合时返回 "invalid version format" 错误
-- [ ] 5.2 实现 `internal/service/library.go`：库 CRUD，版本创建（semver 校验 + 同大版本旧 Chunks 软删除 + 七牛云文件清理）、版本删除、版本列表查询（含 chunk_count/token_count）
-- [ ] 5.3 实现库 embedding 异步生成：库创建或更新 name/description 时，异步 goroutine 调用 EmbeddingService 生成 `name + description` 的 1536 维向量，存入 libraries.embedding
-- [ ] 5.4 实现无感知版本刷新（`RefreshVersionWithCallback`）：新 Chunks 以 `status=pending` + 新 `batch_version` 写入；全部完成后在单个 DB 事务中将新 Chunks 切为 active、旧 Chunks 切为 deleted；SSE 推送 start → doc_N/total → activating → complete；失败文档推送 warning 事件
-- [ ] 5.5 实现 `internal/api/library.go`：库管理 REST API（CRUD + 版本管理端点 + `POST .../refresh-sse`），路由注册
-- [ ] 5.6 实现 `pkg/github/client.go`：GitHub API 客户端（Release 列表获取，tarball 流式下载）
-- [ ] 5.7 实现 `internal/service/github.go`：GitHub 文档导入服务（init-import：LLM 从 URL+README 生成库名；import-sse：tarball 解压过滤 .md 文件，调用文档处理流水线）
-- [ ] 5.8 实现 GitHub API 端点：`POST /api/v1/libraries/github/init-import`、`POST /api/v1/libraries/github/import-sse`、`GET /api/v1/libraries/github/releases`
+- [x] 5.1 实现 semver 版本校验函数（`ValidateVersion`）：正则 `^v?(\d+)\.(\d+)\.(\d+)(-[a-zA-Z0-9.]+)?$`，不符合时返回 "invalid version format" 错误
+- [x] 5.2 实现 `internal/service/library.go`：库 CRUD，版本创建（semver 校验 + 同大版本旧 Chunks 软删除 + 七牛云文件清理）、版本删除、版本列表查询（含 chunk_count/token_count）
+- [x] 5.3 实现库 embedding 异步生成：库创建或更新 name/description 时，异步 goroutine 调用 EmbeddingService 生成 `name + description` 的 1536 维向量，存入 libraries.embedding
+- [x] 5.4 实现无感知版本刷新（`RefreshVersionWithCallback`）：新 Chunks 以 `status=pending` + 新 `batch_version` 写入；全部完成后在单个 DB 事务中将新 Chunks 切为 active、旧 Chunks 切为 deleted；SSE 推送 start → doc_N/total → activating → complete；失败文档推送 warning 事件
+- [x] 5.5 实现 `internal/api/library.go`：库管理 REST API（CRUD + 版本管理端点 + `POST .../refresh-sse`），路由注册
+- [x] 5.6 实现 `pkg/github/client.go`：GitHub API 客户端（Release 列表获取，tarball 流式下载）
+- [x] 5.7 实现 `internal/service/github.go`：GitHub 文档导入服务（init-import：LLM 从 URL+README 生成库名；import-sse：tarball 解压过滤 .md 文件，调用文档处理流水线）
+- [x] 5.8 实现 GitHub API 端点：`POST /api/v1/libraries/github/init-import`、`POST /api/v1/libraries/github/import-sse`、`GET /api/v1/libraries/github/releases`
 
 ## 6. 混合搜索引擎
 
