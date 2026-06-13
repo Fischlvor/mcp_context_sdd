@@ -37,10 +37,10 @@
 - [x] 4.9 实现 `pkg/llm/enrich_worker.go`：5 个并发 worker goroutine 消费 Enrich 任务队列，仅处理 code 类型 Chunk，info 类型 Chunk 直接跳过进入 Embedding 阶段
 - [x] 4.10 实现 `pkg/embedding/openai.go`：EmbeddingService 封装（text-embedding-3-small，1536 维），批量生成（最多 100 条/批），Redis 缓存（key = text SHA256 hash），429 限流时指数退避重试（最多 3 次，间隔 1s/2s/4s）
 - [x] 4.11 实现 `pkg/storage/qiniu.go`：QiniuStorage 实现 Storage 接口（Upload/Delete/DeleteByPrefix/ListByPrefix/GetPublicURL）
-- [ ] 4.12 实现 `internal/service/document.go`：文档处理主流程（上传 → SHA256 去重 → 预处理 → 分块 → 类型检测 → Enrich → Embedding → 批量写入 Chunks），document_uploads 状态跟踪（pending → processing → completed / failed）
-- [ ] 4.13 实现文档删除：`DELETE /api/v1/documents/:id` 软删除（deleted_at）关联 Chunks，触发 Redis 搜索缓存按 library_id 前缀失效
-- [ ] 4.14 实现 `internal/api/document.go`：文档上传 API（同步 + SSE），文档列表，文档详情，Chunks 查询，文档删除
-- [ ] 4.15 实现 `internal/middleware/mcplog.go`：MCP 调用日志中间件，记录 func_name/params/latency_ms/result_count/status/error_msg 到 mcp_call_logs
+- [x] 4.12 实现 `internal/service/document.go`：文档处理主流程（上传 → SHA256 去重 → 预处理 → 分块 → 类型检测 → Enrich → Embedding → 批量写入 Chunks），document_uploads 状态跟踪（pending → processing → completed / failed）
+- [x] 4.13 实现文档删除：`DELETE /api/v1/documents/:id` 软删除（deleted_at）关联 Chunks，触发 Redis 搜索缓存按 library_id 前缀失效
+- [x] 4.14 实现 `internal/api/document.go`：文档上传 API（同步 + SSE），文档列表，文档详情，Chunks 查询，文档删除
+- [x] 4.15 实现 `internal/middleware/mcplog.go`：MCP 调用日志中间件，记录 func_name/params/latency_ms/result_count/status/error_msg 到 mcp_call_logs
 
 ## 5. 库管理和 GitHub 集成
 
