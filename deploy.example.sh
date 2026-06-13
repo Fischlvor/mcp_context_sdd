@@ -9,12 +9,12 @@ set -e  # 遇到错误立即退出
 
 # ==================== 配置区域 ====================
 # 远程服务器配置
-REMOTE_HOST="8.148.64.96"     # 服务器IP
+REMOTE_HOST="your_server_ip"     # 服务器IP
 REMOTE_USER="root"            # SSH用户名
 REMOTE_PORT="22"              # SSH端口，默认22
 
 # 远程服务器路径
-REMOTE_BASE_DIR="/media/practice/onServer/go_mcp_context"
+REMOTE_BASE_DIR="/path/to/your/deploy/dir"
 REMOTE_IMAGE_DIR="${REMOTE_BASE_DIR}/docker_images"
 REMOTE_COMPOSE_DIR="${REMOTE_BASE_DIR}"
 REMOTE_DEPLOY_DIR="${REMOTE_BASE_DIR}/deploy"
