@@ -1,12 +1,12 @@
 ## 1. 项目初始化与基础设施
 
-- [ ] 1.1 初始化 `server-mcp` Go 模块（`go.mod`），添加 gin、gorm、pgvector-go、go-redis、mcp-golang、go-openai、docconv、zap、tiktoken-go、swaggo/swag 依赖
-- [ ] 1.2 初始化 `web-mcp` Vue 3 + TypeScript 项目（vite），添加 element-plus、pinia、axios、vue-router 依赖
-- [ ] 1.3 创建 `configs/config.yaml`（含 PostgreSQL、Redis、OpenAI、七牛云、SSO 配置项），实现 `pkg/config` 读取逻辑
-- [ ] 1.4 实现 `pkg/core/zap.go`：结构化日志初始化（开发/生产两种格式）
-- [ ] 1.5 实现 `internal/initialize/gorm.go`：连接 PostgreSQL，启用 pgvector 扩展，GORM AutoMigrate 8 张表，创建所有索引（HNSW m=16 ef_construction=64、GIN tsvector、复合索引）
-- [ ] 1.6 实现 `internal/initialize/redis.go`：Redis 客户端初始化和健康检查
-- [ ] 1.7 创建 `docker-compose.prod.yml`（PostgreSQL 15 + pgvector、Redis 7、Go Server、Vue Nginx）和 `deploy.sh` 部署脚本
+- [x] 1.1 初始化 `server-mcp` Go 模块（`go.mod`），添加 gin、gorm、pgvector-go、go-redis、mcp-golang、go-openai、docconv、zap、tiktoken-go、swaggo/swag 依赖
+- [x] 1.2 初始化 `web-mcp` Vue 3 + TypeScript 项目（vite），添加 element-plus、pinia、axios、vue-router 依赖
+- [x] 1.3 创建 `configs/config.yaml`（含 PostgreSQL、Redis、OpenAI、七牛云、SSO 配置项），实现 `pkg/config` 读取逻辑
+- [x] 1.4 实现 `pkg/core/zap.go`：结构化日志初始化（开发/生产两种格式）
+- [x] 1.5 实现 `internal/initialize/gorm.go`：连接 PostgreSQL，启用 pgvector 扩展，GORM AutoMigrate 8 张表，创建所有索引（HNSW m=16 ef_construction=64、GIN tsvector、复合索引）
+- [x] 1.6 实现 `internal/initialize/redis.go`：Redis 客户端初始化和健康检查
+- [x] 1.7 创建 `docker-compose.prod.yml`（PostgreSQL 15 + pgvector、Redis 7、Go Server、Vue Nginx）和 `deploy.sh` 部署脚本
 
 ## 2. 数据模型
 

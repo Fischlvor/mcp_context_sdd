@@ -1,0 +1,86 @@
+system:
+  host: 0.0.0.0
+  port: 8090
+  env: debug
+  router_prefix: api
+  storage_type: qiniu
+
+postgres:
+  host: 8.148.64.96
+  port: 15432
+  config: sslmode=disable TimeZone=Asia/Shanghai
+  db_name: mcp_context
+  username: postgres
+  password: zJ0_jE6e,mSYLYYx
+  max_idle_conns: 10
+  max_open_conns: 100
+  log_mode: info
+  gorm_log_file: log/gorm.log
+
+redis:
+  address: 8.148.64.96:16379
+  password: ""
+  db: 3
+
+embedding:
+  provider: openai
+  base_url: https://api.chatanywhere.tech/v1
+  api_key: "sk-yEuYOmimML0RLAgq7seabhDxJxE1ClysqOMS1d2a0sN3Tkya"
+  model: text-embedding-3-small
+  dimension: 1536
+  model_path: ""
+
+llm:
+  provider: openai
+  base_url: ""           # 为空则复用 embedding.base_url
+  api_key: ""            # 为空则复用 embedding.api_key
+  model: gpt-4o-mini     # 推荐使用 gpt-4o-mini，成本低且效果好
+  max_tokens: 500        # 输出限制
+  temperature: 0.3       # 低温度保证输出稳定
+
+qiniu:
+  access_key: gIVxyWfnMMyFxpSxyCvMsHFpHvi4ItxSmtLPo_7g
+  secret_key: -jDMVeN4EbOdHEMARNvoeqg92we5M2te8sjR1YEs
+  bucket: hsk
+  domain: image.hsk423.cn
+  zone: z2
+  use_https: true
+  use_cdn_domains: true
+  path_prefix: mcp/docs
+
+chunker:
+  chunk_size: 512
+  overlap: 50
+
+cache:
+  ttl: 24h
+  prefix: "mcp:"
+
+jwt:
+  access_token_secret: your-access-token-secret-key-here
+  refresh_token_secret: your-refresh-token-secret-key-here
+  access_token_expiry_time: 2h
+  refresh_token_expiry_time: 7d
+  api_token_expiry_time: 90d
+  issuer: go_mcp_context
+
+sso:
+  service_url: http://localhost:8001
+  web_url: http://10.21.71.19:3001
+  client_id: mcp
+  client_secret: mcp_secret_2025_go_mcp_context
+  callback_url: http://10.21.71.19:5273/sso-callback
+  public_key_path: ./keys/sso_public.pem
+  sessions_secret: mcp-sessions-secret-key-2025
+
+zap:
+  level: info
+  filename: log/go_mcp_context.log
+  max_size: 200
+  max_backups: 30
+  max_age: 5
+  is_console_print: true
+
+github:
+  token: ""  # GitHub Personal Access Token，留空或通过环境变量 GITHUB_TOKEN 注入
+  proxy: "http://10.21.71.52:7890"  # 代理地址（可选）
