@@ -66,16 +66,16 @@
 
 ## 7. MCP Server
 
-- [ ] 7.1 实现 `internal/transport/` 传输层：HTTP/SSE/Streamable HTTP 协议检测和分发（`detector.go`、`factory.go`）
-- [ ] 7.2 实现 MCP search-libraries 工具：向量语义搜索（cosine distance < 0.7 阈值）优先，无结果时降级为前缀匹配（score=0.9）→ 包含匹配（score=0.8）→ Levenshtein 相似度（最高 0.7 分），返回 libraries 数组（含 library_id、name、description、versions、default_version、snippets、score）
-- [ ] 7.3 实现 MCP get-library-docs 工具：接受 library_id/version/mode/topic/page 参数，调用混合搜索（含多 topic 并行），格式化返回 documents 数组；topic 支持逗号分隔多值
-- [ ] 7.4 实现 `internal/service/mcp_handler.go`：统一 MCP 请求处理器（initialize/initialized/tools/list/tools/call），记录 mcp_call_logs
-- [ ] 7.5 实现 `internal/api/mcp.go`：MCP 协议端点（`POST /mcp`），挂载 apikey 中间件和 mcplog 中间件
-- [ ] 7.6 实现基础端点：`GET /api/base/health`（返回 `{"status":"ok","version":"..."}`)、`GET /swagger/index.html`（Swagger UI，`swag init` 生成 docs/）
-- [ ] 7.7 实现 `internal/api/stats.go`：统计数据 API（`GET /api/v1/stats`），`pkg/bufferedwriter/` 缓冲写入统计计数器（异步写 statistics 表）
-- [ ] 7.8 实现 `internal/api/activity_log.go`：活动日志 API，支持按 library_id/task_id 查询，事件类型覆盖：EventDocParse、EventDocChunk、EventDocEnrich、EventDocEmbed、EventDocComplete、EventDocFailed
-- [ ] 7.9 实现 `internal/router/enter.go`：路由总装配，注册所有 API 分组（auth、v1、base、mcp），挂载全局中间件（CORS、logger）
-- [ ] 7.10 实现 `main.go`：应用启动入口，依次初始化 config/zap/gorm/redis/embedding/llm/storage/router，启动 HTTP Server
+- [x] 7.1 实现 `internal/transport/` 传输层：HTTP/SSE/Streamable HTTP 协议检测和分发（`detector.go`、`factory.go`）
+- [x] 7.2 实现 MCP search-libraries 工具：向量语义搜索（cosine distance < 0.7 阈值）优先，无结果时降级为前缀匹配（score=0.9）→ 包含匹配（score=0.8）→ Levenshtein 相似度（最高 0.7 分），返回 libraries 数组（含 library_id、name、description、versions、default_version、snippets、score）
+- [x] 7.3 实现 MCP get-library-docs 工具：接受 library_id/version/mode/topic/page 参数，调用混合搜索（含多 topic 并行），格式化返回 documents 数组；topic 支持逗号分隔多值
+- [x] 7.4 实现 `internal/service/mcp_handler.go`：统一 MCP 请求处理器（initialize/initialized/tools/list/tools/call），记录 mcp_call_logs
+- [x] 7.5 实现 `internal/api/mcp.go`：MCP 协议端点（`POST /mcp`），挂载 apikey 中间件和 mcplog 中间件
+- [x] 7.6 实现基础端点：`GET /api/base/health`（返回 `{"status":"ok","version":"..."}`)、`GET /swagger/index.html`（Swagger UI，`swag init` 生成 docs/）
+- [x] 7.7 实现 `internal/api/stats.go`：统计数据 API（`GET /api/v1/stats`），`pkg/bufferedwriter/` 缓冲写入统计计数器（异步写 statistics 表）
+- [x] 7.8 实现 `internal/api/activity_log.go`：活动日志 API，支持按 library_id/task_id 查询，事件类型覆盖：EventDocParse、EventDocChunk、EventDocEnrich、EventDocEmbed、EventDocComplete、EventDocFailed
+- [x] 7.9 实现 `internal/router/enter.go`：路由总装配，注册所有 API 分组（auth、v1、base、mcp），挂载全局中间件（CORS、logger）
+- [x] 7.10 实现 `main.go`：应用启动入口，依次初始化 config/zap/gorm/redis/embedding/llm/storage/router，启动 HTTP Server
 
 ## 8. Vue 3 前端
 
