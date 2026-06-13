@@ -17,12 +17,12 @@
 
 ## 3. 认证系统
 
-- [ ] 3.1 实现 `internal/middleware/sso_jwt.go`：解析 SSO 公钥（PEM），验证 JWT AccessToken，Redis 黑名单检查，提取 user_uuid 写入 Gin context
-- [ ] 3.2 实现 `internal/middleware/apikey.go`：从 `MCP_API_KEY` Header 提取 Token，SHA256 查库，Redis 黑名单验证，过期检查（依次按格式→SHA256→黑名单→过期顺序）
-- [ ] 3.3 实现 `internal/api/auth.go` + `internal/service/auth.go`：SSO 登录 URL 生成（`GET /api/auth/sso_login_url`）、OAuth 回调处理（`GET /api/auth/callback`）、AccessToken（2h）/RefreshToken（7d）颁发、Token 刷新（`POST /api/auth/refresh`）
-- [ ] 3.4 实现登出端点（`POST /api/auth/logout`）：将 AccessToken 写入 Redis 黑名单（TTL = 剩余有效期），返回 200
-- [ ] 3.5 实现 `internal/api/apikey.go` + `internal/service/apikey.go`：API Key 生成（随机 Token + SHA256 存储，明文仅返回一次）、列表查询（`****xxxx` 脱敏显示）、撤销（软删除 + Redis 永久黑名单 `api_token:blacklist:{token_id}`）
-- [ ] 3.6 实现 `internal/api/user.go`：获取当前登录用户信息（从 SSO Token 解析 name/email/avatar）
+- [x] 3.1 实现 `internal/middleware/sso_jwt.go`：解析 SSO 公钥（PEM），验证 JWT AccessToken，Redis 黑名单检查，提取 user_uuid 写入 Gin context
+- [x] 3.2 实现 `internal/middleware/apikey.go`：从 `MCP_API_KEY` Header 提取 Token，SHA256 查库，Redis 黑名单验证，过期检查（依次按格式→SHA256→黑名单→过期顺序）
+- [x] 3.3 实现 `internal/api/auth.go` + `internal/service/auth.go`：SSO 登录 URL 生成（`GET /api/auth/sso_login_url`）、OAuth 回调处理（`GET /api/auth/callback`）、AccessToken（2h）/RefreshToken（7d）颁发、Token 刷新（`POST /api/auth/refresh`）
+- [x] 3.4 实现登出端点（`POST /api/auth/logout`）：将 AccessToken 写入 Redis 黑名单（TTL = 剩余有效期），返回 200
+- [x] 3.5 实现 `internal/api/apikey.go` + `internal/service/apikey.go`：API Key 生成（随机 Token + SHA256 存储，明文仅返回一次）、列表查询（`****xxxx` 脱敏显示）、撤销（软删除 + Redis 永久黑名单 `api_token:blacklist:{token_id}`）
+- [x] 3.6 实现 `internal/api/user.go`：获取当前登录用户信息（从 SSO Token 解析 name/email/avatar）
 
 ## 4. 文档处理流水线
 
