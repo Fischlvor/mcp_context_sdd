@@ -92,15 +92,15 @@
 
 ## 9. 测试
 
-- [ ] 9.1 编写 `test/unit/library_test.go`：库 CRUD、semver 校验、版本管理、embedding 触发逻辑的单元测试（mock DB）
-- [ ] 9.2 编写 `test/unit/chunker_test.go`：Markdown 语义分块器单元测试，覆盖：正常标题切分、超 512 tokens 继续切分、代码块保持原子、代码块内 `#` 不触发切分、无标题文档、极短文档
-- [ ] 9.3 编写 `test/unit/preprocessor_test.go`：preProcessMarkdown 单元测试，覆盖：移除徽章、HTML 注释、独立图片、分隔线、压缩空行
-- [ ] 9.4 编写 `test/unit/search_test.go`：RRF 合并算法单元测试（向量只命中/BM25 只命中/两路都命中/多 topic 合并）；access_count 热度加成验证
-- [ ] 9.5 编写 `test/unit/mcp_test.go`：MCP 工具调用单元测试（search-libraries 向量优先+降级路径；get-library-docs 单/多 topic）
-- [ ] 9.6 编写 `test/unit/document_test.go`：文档处理流水线单元测试（SHA256 去重、Enrich fallback、批量 Embedding 重试逻辑）
-- [ ] 9.7 编写 `test/integration/mcp_handler_integration_test.go`：MCP 集成测试（需真实 DB + Redis）
-- [ ] 9.8 编写 `test/unit/apikey_test.go`：API Key 生成/SHA256 存储/脱敏显示/撤销/黑名单验证测试
-- [ ] 9.9 运行所有测试，确保覆盖率 ≥ 80%（核心服务层）
+- [x] 9.1 编写 `test/unit/library_test.go`：库 CRUD、semver 校验、版本管理、embedding 触发逻辑的单元测试（mock DB）
+- [x] 9.2 编写 `test/unit/processor_test.go`：Markdown 语义分块器单元测试，覆盖：正常标题切分、超 512 tokens 继续切分、代码块保持原子、代码块内 `#` 不触发切分、无标题文档、极短文档
+- [x] 9.3 编写 `test/unit/processor_test.go`：preProcessMarkdown 单元测试，覆盖：移除徽章、HTML 注释、独立图片、分隔线、压缩空行
+- [x] 9.4 编写 `test/unit/search_test.go`：RRF 合并算法单元测试（向量只命中/BM25 只命中/两路都命中/多 topic 合并）；access_count 热度加成验证
+- [x] 9.5 编写 `test/unit/mcp_test.go`：MCP 工具调用单元测试（search-libraries 向量优先+降级路径；get-library-docs 单/多 topic）
+- [x] 9.6 编写 `test/unit/document_test.go`：文档处理流水线单元测试（SHA256 去重、Enrich fallback、批量 Embedding 重试逻辑）
+- [x] 9.7 编写 `test/integration/mcp_handler_integration_test.go`：MCP 集成测试（需真实 DB + Redis）
+- [x] 9.8 编写 `test/unit/apikey_test.go`：API Key 生成/SHA256 存储/脱敏显示/撤销/黑名单验证测试
+- [x] 9.9 运行所有测试，确保覆盖率 ≥ 80%（核心服务层）
 
 ## 10. 部署与文档
 
