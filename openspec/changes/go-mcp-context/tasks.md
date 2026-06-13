@@ -26,17 +26,17 @@
 
 ## 4. 文档处理流水线
 
-- [ ] 4.1 实现 `pkg/parser/markdown.go`：Markdown → 纯文本提取，保留代码块标识
-- [ ] 4.2 实现 `pkg/parser/pdf.go`：基于 docconv 的 PDF → 文本提取，支持多页合并
-- [ ] 4.3 实现 `pkg/parser/docx.go`：基于 docconv 的 DOCX → 文本提取
-- [ ] 4.4 实现 `pkg/preprocessor/markdown.go`（`preProcessMarkdown`）：移除 `[![...](...)` 徽章、`<!-- -->` HTML 注释、HTML `<img>` 标签、连续空行（压缩为单空行）、`---` 水平分隔线；正文内容、代码块、标题层级完整保留
-- [ ] 4.5 实现 `pkg/tokenizer/tiktoken.go`：封装 tiktoken cl100k_base，提供 `CountTokens(text string) int` 接口，用于精确 token 计数（替代字符/4 估算）
-- [ ] 4.6 实现 `pkg/chunker/markdown_chunker.go`（`splitMarkdownWithMetadata`）：以 h1-h6 标题为主切割边界，每个 section 携带完整标题层级路径（如 "Getting Started > Installation"）；section 超过 512 tokens 时按段落和代码块原子单元继续切分；代码块（``` 包裹）不跨块切断；代码块内的 `#` 注释行不触发 section 分割
-- [ ] 4.7 实现 chunk 类型检测：Chunk 含代码块时 chunk_type = "code"（提取 language 和 code 字段），否则 chunk_type = "info"（title = 标题层级路径，不调用 LLM）
-- [ ] 4.8 实现 `pkg/llm/openai.go`：LLMService 封装（gpt-4o-mini），实现 `EnrichChunk` 方法，输入 code 类型 Chunk 文本，输出 `{"title": ..., "description": ...}` JSON；调用失败时 fallback 保留标题路径
-- [ ] 4.9 实现 `pkg/llm/enrich_worker.go`：5 个并发 worker goroutine 消费 Enrich 任务队列，仅处理 code 类型 Chunk，info 类型 Chunk 直接跳过进入 Embedding 阶段
-- [ ] 4.10 实现 `pkg/embedding/openai.go`：EmbeddingService 封装（text-embedding-3-small，1536 维），批量生成（最多 100 条/批），Redis 缓存（key = text SHA256 hash），429 限流时指数退避重试（最多 3 次，间隔 1s/2s/4s）
-- [ ] 4.11 实现 `pkg/storage/qiniu.go`：QiniuStorage 实现 Storage 接口（Upload/Delete/DeleteByPrefix/ListByPrefix/GetPublicURL）
+- [x] 4.1 实现 `pkg/parser/markdown.go`：Markdown → 纯文本提取，保留代码块标识
+- [x] 4.2 实现 `pkg/parser/pdf.go`：基于 docconv 的 PDF → 文本提取，支持多页合并
+- [x] 4.3 实现 `pkg/parser/docx.go`：基于 docconv 的 DOCX → 文本提取
+- [x] 4.4 实现 `pkg/preprocessor/markdown.go`（`preProcessMarkdown`）：移除 `[![...](...)` 徽章、`<!-- -->` HTML 注释、HTML `<img>` 标签、连续空行（压缩为单空行）、`---` 水平分隔线；正文内容、代码块、标题层级完整保留
+- [x] 4.5 实现 `pkg/tokenizer/tiktoken.go`：封装 tiktoken cl100k_base，提供 `CountTokens(text string) int` 接口，用于精确 token 计数（替代字符/4 估算）
+- [x] 4.6 实现 `pkg/chunker/markdown_chunker.go`（`splitMarkdownWithMetadata`）：以 h1-h6 标题为主切割边界，每个 section 携带完整标题层级路径（如 "Getting Started > Installation"）；section 超过 512 tokens 时按段落和代码块原子单元继续切分；代码块（``` 包裹）不跨块切断；代码块内的 `#` 注释行不触发 section 分割
+- [x] 4.7 实现 chunk 类型检测：Chunk 含代码块时 chunk_type = "code"（提取 language 和 code 字段），否则 chunk_type = "info"（title = 标题层级路径，不调用 LLM）
+- [x] 4.8 实现 `pkg/llm/openai.go`：LLMService 封装（gpt-4o-mini），实现 `EnrichChunk` 方法，输入 code 类型 Chunk 文本，输出 `{"title": ..., "description": ...}` JSON；调用失败时 fallback 保留标题路径
+- [x] 4.9 实现 `pkg/llm/enrich_worker.go`：5 个并发 worker goroutine 消费 Enrich 任务队列，仅处理 code 类型 Chunk，info 类型 Chunk 直接跳过进入 Embedding 阶段
+- [x] 4.10 实现 `pkg/embedding/openai.go`：EmbeddingService 封装（text-embedding-3-small，1536 维），批量生成（最多 100 条/批），Redis 缓存（key = text SHA256 hash），429 限流时指数退避重试（最多 3 次，间隔 1s/2s/4s）
+- [x] 4.11 实现 `pkg/storage/qiniu.go`：QiniuStorage 实现 Storage 接口（Upload/Delete/DeleteByPrefix/ListByPrefix/GetPublicURL）
 - [ ] 4.12 实现 `internal/service/document.go`：文档处理主流程（上传 → SHA256 去重 → 预处理 → 分块 → 类型检测 → Enrich → Embedding → 批量写入 Chunks），document_uploads 状态跟踪（pending → processing → completed / failed）
 - [ ] 4.13 实现文档删除：`DELETE /api/v1/documents/:id` 软删除（deleted_at）关联 Chunks，触发 Redis 搜索缓存按 library_id 前缀失效
 - [ ] 4.14 实现 `internal/api/document.go`：文档上传 API（同步 + SSE），文档列表，文档详情，Chunks 查询，文档删除
