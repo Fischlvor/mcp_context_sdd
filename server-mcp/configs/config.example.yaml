@@ -1,0 +1,77 @@
+system:
+  host: 0.0.0.0
+  port: 8080
+  env: debug
+  router_prefix: api
+  storage_type: local  # local 或 qiniu
+
+postgres:
+  host: localhost
+  port: 5432
+  config: sslmode=disable TimeZone=Asia/Shanghai
+  db_name: mcp_context
+  username: postgres
+  password: your_password
+  max_idle_conns: 10
+  max_open_conns: 100
+  log_mode: info
+  gorm_log_file: log/gorm.log
+
+redis:
+  address: localhost:6379
+  password: ""
+  db: 3
+
+embedding:
+  provider: openai
+  base_url: ""  # 代理地址，为空则使用官方地址
+  api_key: your_openai_api_key
+  model: text-embedding-3-small
+  dimension: 1536
+  model_path: ""
+
+llm:
+  provider: openai
+  base_url: ""           # 为空则复用 embedding.base_url
+  api_key: ""            # 为空则复用 embedding.api_key
+  model: gpt-4o-mini     # 推荐使用 gpt-4o-mini，成本低且效果好
+  max_tokens: 500        # 输出限制
+  temperature: 0.3       # 低温度保证输出稳定
+
+qiniu:
+  access_key: your_qiniu_access_key
+  secret_key: your_qiniu_secret_key
+  bucket: your_bucket_name
+  domain: your_cdn_domain.com
+  zone: z0               # z0=华东, z1=华北, z2=华南, na0=北美, as0=新加坡
+  use_https: true
+  use_cdn_domains: true
+  path_prefix: mcp/docs  # 存储路径前缀
+
+chunker:
+  chunk_size: 512
+  overlap: 50
+
+cache:
+  ttl: 24h
+  prefix: "mcp:"
+
+jwt:
+  access_token_secret: your-access-token-secret-key-here
+  refresh_token_secret: your-refresh-token-secret-key-here
+  access_token_expiry_time: 2h
+  refresh_token_expiry_time: 7d
+  api_token_expiry_time: 90d
+  issuer: go_mcp_context
+
+zap:
+  level: info
+  filename: log/go_mcp_context.log
+  max_size: 200
+  max_backups: 30
+  max_age: 5
+  is_console_print: true
+
+github:
+  token: ""   # GitHub Personal Access Token（可选，用于提高 API 速率限制）
+  proxy: ""   # 代理地址（可选，如 http://10.21.71.52:7890）
