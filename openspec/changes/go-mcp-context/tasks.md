@@ -10,10 +10,10 @@
 
 ## 2. 数据模型
 
-- [ ] 2.1 实现 `internal/model/database/` 下 8 个 GORM 模型：Library（含 embedding vector(1536)、batch_version、access_count）、DocumentUpload（含 content_hash、status、batch_version）、DocumentChunk（含 chunk_type、language、code、embedding、batch_version、access_count、status）、SearchCache、APIKey（含 token_sha256、token_last4、expires_at）、Statistics、ActivityLog、MCPCallLog
-- [ ] 2.2 实现 `internal/model/request/` 下所有请求 DTO（库管理、文档上传、搜索、API Key、GitHub 导入）
-- [ ] 2.3 实现 `internal/model/response/` 下所有响应 DTO（库详情、文档片段、搜索结果、统计数据）
-- [ ] 2.4 实现 `pkg/global/` 全局变量（DB、Redis、Config、Logger、EmbeddingService、LLMService、Storage）
+- [x] 2.1 实现 `internal/model/database/` 下 8 个 GORM 模型：Library（含 embedding vector(1536)、batch_version、access_count）、DocumentUpload（含 content_hash、status、batch_version）、DocumentChunk（含 chunk_type、language、code、embedding、batch_version、access_count、status）、SearchCache、APIKey（含 token_sha256、token_last4、expires_at）、Statistics、ActivityLog、MCPCallLog
+- [x] 2.2 实现 `internal/model/request/` 下所有请求 DTO（库管理、文档上传、搜索、API Key、GitHub 导入）
+- [x] 2.3 实现 `internal/model/response/` 下所有响应 DTO（库详情、文档片段、搜索结果、统计数据）
+- [x] 2.4 实现 `pkg/global/` 全局变量（DB、Redis、Config、Logger、EmbeddingService、LLMService、Storage）
 
 ## 3. 认证系统
 
