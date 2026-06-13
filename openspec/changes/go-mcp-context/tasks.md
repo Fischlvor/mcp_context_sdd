@@ -55,14 +55,14 @@
 
 ## 6. 混合搜索引擎
 
-- [ ] 6.1 实现向量搜索：生成查询 Embedding，执行 pgvector cosine `<=>` 搜索 Top-50，支持 library_id（0 表示全局）/version/chunk_type/status 过滤
-- [ ] 6.2 实现 BM25 全文搜索：`chunk_tsvector_simple @@ plainto_tsquery('simple', ?)` + ts_rank 降序，Top-50，相同过滤条件
-- [ ] 6.3 实现 RRF 合并算法（`hybridRRF`）：合并两路结果，计算 `0.7/(vector_rank+60) + 0.3/(bm25_rank+60) + 0.2*(access_count/max_access_count)`，去重，分页返回 Top-10
-- [ ] 6.4 实现多 topic 并行搜索（`searchMultiTopicsWithRRF`）：按逗号分隔 topic 参数，对每个 sub-topic 并行执行完整混合搜索，结果再次 RRF 合并取 Top-10；单 topic 时直接走单路搜索
-- [ ] 6.5 实现异步 access_count 更新：搜索返回后，后台 goroutine 对命中 Chunks 的 access_count 各自 +1，不阻塞搜索响应
-- [ ] 6.6 实现 Redis 搜索缓存：key `search:topic:{library_id}:{version}:{mode}:{topic_md5}`，24h TTL，命中直接返回；文档更新/删除/刷新后按 `search:topic:{library_id}:*` 前缀批量失效
-- [ ] 6.7 实现 `internal/api/search.go`：搜索 API，支持 library_id/version/mode/topic/page 参数
-- [ ] 6.8 实现 `pkg/vectorstore/store.go`：向量存储访问层，封装 pgvector 批量写入和查询操作
+- [x] 6.1 实现向量搜索：生成查询 Embedding，执行 pgvector cosine `<=>` 搜索 Top-50，支持 library_id（0 表示全局）/version/chunk_type/status 过滤
+- [x] 6.2 实现 BM25 全文搜索：`chunk_tsvector_simple @@ plainto_tsquery('simple', ?)` + ts_rank 降序，Top-50，相同过滤条件
+- [x] 6.3 实现 RRF 合并算法（`hybridRRF`）：合并两路结果，计算 `0.7/(vector_rank+60) + 0.3/(bm25_rank+60) + 0.2*(access_count/max_access_count)`，去重，分页返回 Top-10
+- [x] 6.4 实现多 topic 并行搜索（`searchMultiTopicsWithRRF`）：按逗号分隔 topic 参数，对每个 sub-topic 并行执行完整混合搜索，结果再次 RRF 合并取 Top-10；单 topic 时直接走单路搜索
+- [x] 6.5 实现异步 access_count 更新：搜索返回后，后台 goroutine 对命中 Chunks 的 access_count 各自 +1，不阻塞搜索响应
+- [x] 6.6 实现 Redis 搜索缓存：key `search:topic:{library_id}:{version}:{mode}:{topic_md5}`，24h TTL，命中直接返回；文档更新/删除/刷新后按 `search:topic:{library_id}:*` 前缀批量失效
+- [x] 6.7 实现 `internal/api/search.go`：搜索 API，支持 library_id/version/mode/topic/page 参数
+- [x] 6.8 实现 `pkg/vectorstore/store.go`：向量存储访问层，封装 pgvector 批量写入和查询操作
 
 ## 7. MCP Server
 
