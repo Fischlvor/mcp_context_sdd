@@ -79,16 +79,16 @@
 
 ## 8. Vue 3 前端
 
-- [ ] 8.1 实现 `src/utils/request.ts`：axios 封装（baseURL、JWT 拦截器、401 自动刷新 Token、统一错误处理）
-- [ ] 8.2 实现 `src/api/` 下所有接口模块：auth.ts（含 logout）、library.ts、document.ts（含 delete）、search.ts、apikey.ts
-- [ ] 8.3 实现 `src/stores/user.ts`：Pinia store（用户信息、Token 存储、登录/登出）
-- [ ] 8.4 实现 `src/router/index.ts`：路由配置（Dashboard/Library/Search/User），路由守卫（未登录跳转 SSO）
-- [ ] 8.5 实现 `src/views/dashboard/index.vue`：统计卡片（总库数、总 Chunk 数、总 Token 数、MCP 调用次数）+ 最近 7 天 MCP 调用趋势图
-- [ ] 8.6 实现 `src/views/library/index.vue`：库列表（语义搜索/创建/删除）和 `admin.vue`（版本管理 + GitHub 导入）
-- [ ] 8.7 实现 `src/views/library/detail.vue`：库详情（版本列表、文档列表、文档删除按钮）+ `src/components/AddDocsModal.vue`（文件拖拽上传 + SSE 逐文件进度条）
-- [ ] 8.8 实现 `src/views/search/index.vue`：搜索测试页（库/版本/mode 选择器、多 topic 输入、结果列表 + relevance 分数 + 翻页）
-- [ ] 8.9 实现用户中心（`src/views/user/`）：个人信息展示 + API Key 管理表格（生成弹窗含一次性明文展示与复制 + 撤销二次确认）
-- [ ] 8.10 实现 `src/views/SSOCallback.vue`：SSO 回调页面，解析 code 参数，换取 Token，跳转 Dashboard
+- [x] 8.1 实现 `src/utils/request.ts`：axios 封装（baseURL、JWT 拦截器、401 自动刷新 Token、统一错误处理）
+- [x] 8.2 实现 `src/api/` 下所有接口模块：auth.ts（含 logout）、library.ts、document.ts（含 delete）、search.ts、apikey.ts
+- [x] 8.3 实现 `src/stores/user.ts`：Pinia store（用户信息、Token 存储、登录/登出）
+- [x] 8.4 实现 `src/router/index.ts`：路由配置（Dashboard/Library/Search/User），路由守卫（未登录跳转 SSO）
+- [x] 8.5 实现 `src/views/dashboard/index.vue`：统计卡片（总库数、总 Chunk 数、总 Token 数、MCP 调用次数）+ 最近 7 天 MCP 调用趋势图
+- [x] 8.6 实现 `src/views/library/index.vue`：库列表（语义搜索/创建/删除）和 `admin.vue`（版本管理 + GitHub 导入）
+- [x] 8.7 实现 `src/views/library/detail.vue`：库详情（版本列表、文档列表、文档删除按钮）+ `src/components/AddDocsModal.vue`（文件拖拽上传 + SSE 逐文件进度条）
+- [x] 8.8 实现 `src/views/search/index.vue`：搜索测试页（库/版本/mode 选择器、多 topic 输入、结果列表 + relevance 分数 + 翻页）
+- [x] 8.9 实现用户中心（`src/views/home/index.vue`）：个人信息展示 + API Key 管理表格（生成弹窗含一次性明文展示与复制 + 撤销二次确认）
+- [x] 8.10 实现 `src/views/SSOCallback.vue`：SSO 回调页面，解析 code 参数，换取 Token，跳转 Dashboard
 
 ## 9. 测试
 
