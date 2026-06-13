@@ -70,7 +70,7 @@ MCP 服务器支持以下 7 个方法：
     "protocolVersion": "2025-11-25",
     "capabilities": {},
     "clientInfo": {
-      "name": "CoStrict",
+      "name": "******",
       "version": "2.1.4"
     }
   }
